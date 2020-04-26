@@ -53,9 +53,9 @@ def valid(n):
         if len(line2) < 3:
             raise ValueError('Не полный набор данных')
         elif len(line2) == 3:
-            if line[3].isdigit() == True:
+            if line[2].isdigit() == True:
                 if int(line2[2]) < 10 or int(line2[2]) > 90:
-                    raise ValueError('поле возраст НЕ является числом от 10 до 99', isapha3)
+                    raise ValueError('поле возраст НЕ является числом от 10 до 99')
             if line2[0].isalpha() != True:
                 raise NotNameError('поле имени содержит НЕ только буквы')
             if line2[1].find('@') == -1 and line2[1].find('.') == -1:
