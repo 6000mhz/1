@@ -72,8 +72,3 @@ except NotNameError as exp:
     print(exp)
 except NotEmailError as exp:
     print(exp)
-
-pass
-print(22)
-property
-'dljskjdksldjskldj'
