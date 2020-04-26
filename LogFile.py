@@ -5,7 +5,7 @@ for line in ff.readlines():
     line1 = line.split()
     if len(line1) == 3 and line1[0].isalpha() == True:
         if line1[1].find('@') != -1 and line1[1].find('.') != -1:
-            if int(line1[2]) >= 10 and int(line1[2]) <= 90:
+            if 10 <= int(line1[2]) <= 90:
                 v1.write(line1[0] + ' ' + line1[1] + ' ' + line1[2] + '\n')
     elif len(line1) == 3:
         z1.write(line1[0] + ' ' + line1[1] + ' ' + line1[2] + '\n')
@@ -13,7 +13,7 @@ for line in ff.readlines():
         z1.write(line1[0] + ' ' + line1[1] + '\n')
     elif len(line1) == 1:
         z1.write(line1[0] + '\n')
-    elif len(line1) == None:
+    elif len(line1) is None:
         pass
 
         # print(line1)
@@ -53,10 +53,10 @@ def valid(n):
         if len(line2) < 3:
             raise ValueError('Не полный набор данных')
         elif len(line2) == 3:
-            if line[2].isdigit() == True:
+            if line[2].isdigit() is True:
                 if int(line2[2]) < 10 or int(line2[2]) > 90:
                     raise ValueError('поле возраст НЕ является числом от 10 до 99')
-            if line2[0].isalpha() != True:
+            if line2[0].isalpha() is not True:
                 raise NotNameError('поле имени содержит НЕ только буквы')
             if line2[1].find('@') == -1 and line2[1].find('.') == -1:
                 raise NotEmailError('поле email НЕ содержит @ и .(точку)')
@@ -65,7 +65,7 @@ def valid(n):
 
 # valid(9)
 try:
-    valid(16)
+    valid(26)
 except ValueError as exp:
     print(exp)
 except NotNameError as exp:
