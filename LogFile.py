@@ -3,17 +3,18 @@ v1 = open('registrations_good.log', 'w', encoding='utf-8')
 z1 = open('registrations_bad.log', 'w', encoding='utf-8')
 for line in ff.readlines():
     line1 = line.split()
-    if len(line1) == 3 and line1[0].isalpha() == True:
+    if len(line1) == 3 and line1[0].isalpha() is True:
         if line1[1].find('@') != -1 and line1[1].find('.') != -1:
             if 10 <= int(line1[2]) <= 90:
                 v1.write(line1[0] + ' ' + line1[1] + ' ' + line1[2] + '\n')
-    elif len(line1) == 3:
+                continue
+    if len(line1) == 3:
         z1.write(line1[0] + ' ' + line1[1] + ' ' + line1[2] + '\n')
-    elif len(line1) == 2:
+    if len(line1) == 2:
         z1.write(line1[0] + ' ' + line1[1] + '\n')
-    elif len(line1) == 1:
+    if len(line1) == 1:
         z1.write(line1[0] + '\n')
-    elif len(line1) is None:
+    if len(line1) is None:
         pass
 
         # print(line1)
@@ -49,7 +50,7 @@ def valid(n):
         first_line = bad.readlines()
         line2 = first_line[n].split()
         print(line2)
-        # print(len(line2))
+        #print(len(line2))
         if len(line2) < 3:
             raise ValueError('Не полный набор данных')
         elif len(line2) == 3:
@@ -58,14 +59,13 @@ def valid(n):
                     raise ValueError('поле возраст НЕ является числом от 10 до 99')
             if line2[0].isalpha() is not True:
                 raise NotNameError('поле имени содержит НЕ только буквы')
-            if line2[1].find('@') == -1 and line2[1].find('.') == -1:
-                raise NotEmailError('поле email НЕ содержит @ и .(точку)')
-    return 'Ошибки нет'
+            if line2[1].find('@') == -1 or line2[1].find('.') == -1:
+                raise NotEmailError('поле email НЕ содержит @ или .(точку)')
 
 
 # valid(9)
 try:
-    valid(26)
+    valid(0)
 except ValueError as exp:
     print(exp)
 except NotNameError as exp:
